@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class QuizApp {
+    private static final String[] questions = {
+        "1. What is the capital of France?",
+        "2. Which planet is known as the Red Planet?",
+        "3. What is the largest mammal on Earth?"
+    };
+
+    private static final String[] options = {
+        "a. Paris  b. Rome  c. Berlin  d. Madrid",
+        "a. Venus  b. Mars  c. Jupiter  d. Saturn",
+        "a. Elephant  b. Blue whale  c. Giraffe  d. Gorilla"
+    };
+
+    private static final int[] answers = {1, 2, 2}; // Index of the correct option for each question
+
+    private int score;
+
+    public void startQuiz() {
+        Scanner scanner = new Scanner(System.in);
+
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            System.out.println(options[i]);
+
+            System.out.print("Your answer (enter the option number): ");
+            int userAnswer = scanner.nextInt();
+
+            if (userAnswer == answers[i]) {
+                System.out.println("Correct!\n");
+                score++;
+            } else {
+                System.out.println("Incorrect. The correct answer is: " + options[i].charAt(answers[i] * 4 - 4) + "\n");
+            }
+        }
+
+        System.out.println("Quiz completed! Your score: " + score + " out of " + questions.length);
+    }
+
+    public static void main(String[] args) {
+        QuizApp quiz = new QuizApp();
+        quiz.startQuiz();
+    }
+}
